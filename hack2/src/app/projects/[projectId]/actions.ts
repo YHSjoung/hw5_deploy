@@ -11,13 +11,13 @@ import { tasksTable, usersToProjectsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
 import { publicEnv } from "@/lib/env/public";
 
-export async function getProject(_projectId: string) {
+export async function getProject(projectId: string) {
   const session = await auth();
   const userId = session?.user?.id;
   if (!userId) {
     redirect(`${publicEnv.NEXT_PUBLIC_BASE_URL}`);
   }
-
+  console.log(projectId);
   const userToProject = await db.query.usersToProjectsTable.findFirst({
     // TODO: 8. Select the correct project by userId and projectId
     where: eq(usersToProjectsTable.userId, userId),
