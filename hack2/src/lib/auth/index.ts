@@ -36,6 +36,7 @@ export const {
         },
       };
     },
+
     async jwt({ token, account }) {
       // Sign in with social account, e.g. GitHub, Google, etc.
       if (!account) return token;
